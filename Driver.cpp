@@ -1,38 +1,17 @@
-#include<string.h>
-#include<iostream>
 
+#include<iostream>
+#include "StringFactory.hpp"
 using namespace std;
 
-char str[] = "158 + 267 - 156";
-string arr[50];
-int a = 0;
-
-void stringspilter()
-{
-    char delims[] = "+-*/ ";
-    char* tempString;
-    tempString = strtok(str, delims);
-    do
-    {
-        arr[a] = tempString;
-        a++;
-        tempString = strtok(NULL, " ");
-
-
-    } while (tempString);
-
-
-    
-}
-
-
 int main()
-
 {
-    stringspilter();
+    char string[] = "200 + 13 - 46 / 6 * 23";
 
-    for(int i = 0; i<a; i++)
-    {
-        cout<<arr[i]<<"\n";
-    }
+    char delims[] = " ";
+
+    LinkedList* ll = new LinkedList();
+
+    StringFactory::split(ll, string, delims);
+  
+    ll->display();
 }
