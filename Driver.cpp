@@ -1,17 +1,27 @@
+#include <string.h>
+#include <iostream>
+#include "Queue.hpp"
 
-#include<iostream>
-#include "StringFactory.hpp"
 using namespace std;
 
 int main()
 {
-    char string[] = "200 + 13 - 46 / 6 * 23";
+    Queue* inputQ = new Queue();
+    char s[] = "210 + 25 - 13 / 7 - 168 * 45";
+   
 
-    char delims[] = " ";
+    char* delims = (char*)" ";
+    char* tempString;
 
-    LinkedList* ll = new LinkedList();
+    tempString = strtok(s, delims);
 
-    StringFactory::split(ll, string, delims);
-  
-    ll->display();
+    do 
+    {
+        inputQ->Enqueue(tempString);
+        tempString = strtok(NULL, " ");
+
+    }while (tempString);
+
+    inputQ->DisplayQueue();
+    
 }
